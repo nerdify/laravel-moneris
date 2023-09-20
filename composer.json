@@ -1,0 +1,56 @@
+{
+    "name": "nerdify/laravel-moneris",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nerdify\\Moneris\\Laravel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mariabug",
+            "email": "16159494+mariabug@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/laravel": "^10.0.0",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.13",
+        "nunomaduro/larastan": "^2.6",
+        "orchestra/testbench": "^8.11",
+        "pestphp/pest": "^2.19",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "rector/rector": "^0.18.3",
+        "thecodingmachine/phpstan-safe-rule": "^1.2"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "LogSnag": "nerdify\\Moneris\\Facade"
+            },
+            "providers": [
+                "nerdify\\Moneris\\Laravel\\MonerisServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "analyse": "phpstan analyse --configuration=phpstan.neon.dist",
+        "rector": "rector",
+        "test": "pest"
+    }
+}
